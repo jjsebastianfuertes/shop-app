@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
       title: 'Shop App',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
+        accentColor: Colors.purple,
+        fontFamily: 'Jomolhari'
       ),
       home: ProductsOverviewScreen(),
     );
