@@ -64,7 +64,9 @@ class Products with ChangeNotifier {
 
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       final List<Product> loadedProducts = [];
-
+      if (extractedData == null) {
+        return;
+      }
       extractedData.forEach((prodId, prodData) => {
             loadedProducts.insert(
               0,
@@ -138,7 +140,8 @@ class Products with ChangeNotifier {
   }
 
   Future<void> deleteProduct(String id) async {
-    final url = 'https://flutter-shop-app-13afb.firebaseio.com/products/$id.json';
+    final url =
+        'https://flutter-shop-app-13afb.firebaseio.com/products/$id.json';
     final existingProductIndex = _items.indexWhere((prod) => prod.id == id);
     var existingProduct = _items[existingProductIndex];
     _items.removeAt(existingProductIndex);
