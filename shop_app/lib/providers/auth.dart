@@ -54,6 +54,10 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
+  String get userId{
+    return _userId;
+  }
+
   Future<void> signup(String email, String password) async {
     return _autheticate(email, password, "signUp");
   }

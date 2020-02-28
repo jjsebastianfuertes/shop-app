@@ -25,15 +25,19 @@ class MyApp extends StatelessWidget {
             value: AuthProvider(),
           ),
           ChangeNotifierProxyProvider<AuthProvider, Products>(
-            create: (_) => Products(null, []),
-            update: (ctx, authData, previusProducts) => Products(authData.token,
+            create: (_) => Products(null, null, []),
+            update: (ctx, authData, previusProducts) => Products(
+                authData.token,
+                authData.userId,
                 previusProducts == null ? [] : previusProducts.items),
           ),
           ChangeNotifierProvider.value(
             value: Cart(),
           ),
-          ChangeNotifierProvider.value(
-            value: Orders(),
+          ChangeNotifierProxyProvider<AuthProvider, Orders>(
+            create: (_) => Orders(null, []),
+            update: (ctx, authData, previusOrders) => Orders(authData.token,
+                previusOrders == null ? [] : previusOrders.orders),
           ),
         ],
         child: Consumer<AuthProvider>(
