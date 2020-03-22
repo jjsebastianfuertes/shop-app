@@ -43,6 +43,7 @@ class CartItem extends StatelessWidget {
             ],
           ),
         );
+        return null;
       },
       key: ValueKey(id),
       direction: DismissDirection.endToStart,
